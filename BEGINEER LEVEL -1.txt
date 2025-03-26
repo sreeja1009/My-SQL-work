@@ -1,0 +1,103 @@
+
+-----begineers------
+
+
+
+use pratice
+
+select top 100 * from [emp_records ]
+
+--1 How many employees are there in each country ?
+
+select count(Employee_ID) as total_employees,country from [emp_records ]
+  group by country
+  order by total_employees 
+
+--2) How many employees are there in each department ?
+ 
+ select count(Employee_ID) as total_employees, Department from [emp_records ]
+ group by Department
+ order by total_employees
+
+
+--3) How many employees are there in each position ?
+
+select count(Employee_ID) as total_employees , position from[emp_records ]
+group by Position
+order by total_employees
+ 
+--4) How many employees are joined in each year ?
+
+
+select count(Employee_ID) as total_employees , Joining_Date from[emp_records ]
+group by Joining_Date 
+order by total_employees
+
+
+--5) How many employees are joined in each year and month ?
+
+  select year(Joining_Date) as join_year ,
+         month(Joining_Date) as join_month,
+     count(*)  as total_employees ,Joining_Date from [emp_records ]
+	  group by Joining_Date
+	
+
+
+--6) Which year had the highest number of employees join ?
+
+ select top 5 count(Employee_ID) as  total_employee,Joining_Date from [emp_records ]
+  group by Joining_Date
+  order by total_employee desc
+
+
+--7) Which year had the lowest number of employees join ?
+
+select top 5 count(Employee_ID) as total_employee,Joining_Date from [emp_records ]
+ group by Joining_Date
+  order by total_employee  
+
+
+--8) Get the top 10 highest salaries ?
+
+select top 10 *from[emp_records ]
+order by salary desc
+
+
+--9) Get the top 10 lowest salaries ?
+
+
+select top 10 *from[emp_records ]
+order by salary 
+
+--10) Get the employees count by gender ?
+
+
+--11) Find the employees whose names starts with a ?
+
+select*from [emp_records ] where Employee_Name 
+ like 'a%'
+
+
+--12) Find the employees whose names ends with a ?
+
+select*from [emp_records ] where Employee_Name 
+ like '%a'
+
+--13) Calculate the total salary spent for each country ?
+
+select sum(salary)as total_salary, country from [emp_records ]
+ group by Country
+
+
+--14) Find Employees with Minimum Salary in Each Department ?
+
+select min(salary)as lowest_salary, Department from [emp_records ]
+ 
+ group by Department
+
+
+
+--15) List all employees from India who are Managers ?
+
+select * from [emp_records ] where country = 'India' and Position = 'Manager'
+
